@@ -1,13 +1,37 @@
+
+# PHP 8.2 + Apache base image
 FROM php:8.2-apache
 
-# PostgreSQL холболтод хэрэгтэй сангуудыг суулгах
-RUN apt-get update && apt-get install -y libpq-dev \
-    && docker-php-ext-install pdo pdo_pgsql
+# System dependencies суулгах
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+    libcurl4-openssl-dev \
+    unzip \
+    git \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
 
-# Төслийн бүх файлыг контейнер руу хуулах
-COPY . /var/www/html/
+# PHP extensions суулгах (Supabase + QPay)
+RUN docker-php-ext-install \
+    pdo \
+    pdo_pgsql \
+    pgsql \
+    curl
 
-# Apache серверт файл унших эрх өгөх
-RUN chown -R www-data:www-data /var/www/html/
+# Apache mod_rewrite enable хийх (ихэнх framework-д хэрэгтэй)
+RUN a2enmod rewrite
 
+# Working directory
+WORKDIR /var/www/html
+
+# Project файлууд copy хийх
+COPY . .
+
+# Permission засах (optional)
+RUN chown -R www-data:www-data /var/www/html
+
+# Port
 EXPOSE 80
+
+# Apache start
+CMD ["apache2-foreground"]
