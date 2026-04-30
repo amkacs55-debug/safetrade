@@ -1,50 +1,32 @@
 <?php
 // ============================================
-// config.php — Supabase PostgreSQL + Render env
+// config.php — Шууд утгатай (Supabase)
 // ============================================
 
-// --- Database (Supabase PostgreSQL) ---
-// Render environment variables-д тохируулна:
-// DATABASE_URL = postgresql://postgres.xxx:[PASSWORD]@aws-1-ap-northeast-1.pooler.supabase.com:6543/postgres
-$_db_url = getenv('DATABASE_URL') ?: '';
+// --- Database ---
+define('DB_HOST', 'aws-1-ap-northeast-1.pooler.supabase.com');
+define('DB_PORT', 6543);
+define('DB_USER', 'postgres.mmdvytteigecblxuvust');
+define('DB_PASS', 'Hosoo0625201'); // ← нууц үгээ энд бич
+define('DB_NAME', 'postgres');
 
-if ($_db_url) {
-    // DATABASE_URL-с задлах
-    $p = parse_url($_db_url);
-    define('DB_HOST', $p['host']);
-    define('DB_PORT', $p['port'] ?? 6543);
-    define('DB_USER', urldecode($p['user']));
-    define('DB_PASS', urldecode($p['pass']));
-    define('DB_NAME', ltrim($p['path'], '/'));
-} else {
-    // Тусдаа env vars (fallback)
-    define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
-    define('DB_PORT', (int)(getenv('DB_PORT') ?: 5432));
-    define('DB_USER', getenv('DB_USER') ?: 'postgres');
-    define('DB_PASS', getenv('DB_PASS') ?: '');
-    define('DB_NAME', getenv('DB_NAME') ?: 'postgres');
-}
-
-// --- QPay ---
+// --- QPay (одоогоор хоосон = demo горим) ---
 define('QPAY_API_URL',      'https://merchant.qpay.mn/v2');
-define('QPAY_USERNAME',     getenv('QPAY_USERNAME')     ?: '');
-define('QPAY_PASSWORD',     getenv('QPAY_PASSWORD')     ?: '');
-define('QPAY_INVOICE_CODE', getenv('QPAY_INVOICE_CODE') ?: '');
-
-// QPAY_USERNAME хоосон бол DEMO горим
-define('DEMO_MODE', QPAY_USERNAME === '');
+define('QPAY_USERNAME',     '');
+define('QPAY_PASSWORD',     '');
+define('QPAY_INVOICE_CODE', '');
+define('DEMO_MODE', true);
 
 // --- Шимтгэл ---
-define('PLATFORM_FEE_PERCENT', (int)(getenv('FEE_PERCENT') ?: 5));
+define('PLATFORM_FEE_PERCENT', 5);
 
 // --- Шифрлэлт (яг 32 тэмдэгт) ---
-$_ekey = getenv('ENCRYPT_KEY') ?: 'DemoKey_32bytes_ForTestOnly!!!1';
-define('ENCRYPT_KEY',    substr(str_pad($_ekey, 32, '0'), 0, 32));
+define('ENCRYPT_KEY',    'GameMarket2024SecretKey!Mongolia');
 define('ENCRYPT_CIPHER', 'AES-256-CBC');
 
-// --- URL / Webhook ---
-define('BASE_URL',       rtrim(getenv('BASE_URL') ?: 'http://localhost', '/'));
-define('WEBHOOK_SECRET', getenv('WEBHOOK_SECRET') ?: 'demo_webhook_secret');
+// --- URL ---
+define('BASE_URL',       'https://YOUR_APP.onrender.com'); // ← render URL-аа бич
+define('WEBHOOK_SECRET', 'gmarket_webhook_2024_secret');
 
 // --- Захиалга дуусах хугацаа ---
 define('ORDER_EXPIRE_MINUTES', 30);
