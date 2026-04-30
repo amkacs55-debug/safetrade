@@ -7,7 +7,7 @@
 define('DB_HOST', 'aws-1-ap-northeast-1.pooler.supabase.com');
 define('DB_PORT', 6543);
 define('DB_USER', 'postgres.mmdvytteigecblxuvust');
-define('DB_PASS', 'Hosoo0625201'); // ← нууц үгээ энд бич
+define('DB_PASS', 'YOUR_SUPABASE_PASSWORD_HERE'); // ← нууц үгээ энд бич
 define('DB_NAME', 'postgres');
 
 // --- QPay (одоогоор хоосон = demo горим) ---
