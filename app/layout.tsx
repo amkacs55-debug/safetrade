@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { Navbar } from '@/components/layout/Navbar'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'GameMarket MN — Тоглоомын аккаунт арилжаа',
   description: 'Mobile Legends, Standoff 2, PUBG аккаунт зарах, худалдан авах найдвартай платформ',
