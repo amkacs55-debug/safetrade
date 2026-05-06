@@ -143,4 +143,3 @@ function ListingCard({ listing }: { listing: any }) {
     </Link>
   )
 }
-
