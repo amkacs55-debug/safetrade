@@ -1,6 +1,5 @@
-export const dynamic = 'force-dynamic'
-
 'use client'
+
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase'
@@ -58,9 +57,7 @@ export default function NewListingPage() {
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
       <h1 className="font-display text-4xl font-bold text-white mb-8">ЗАР НЭМЭХ</h1>
-
       <div className="space-y-6">
-        {/* Game */}
         <div className="bg-dark-900 border border-dark-800 rounded-2xl p-6">
           <label className="text-white font-semibold mb-3 block">Тоглоом сонгох</label>
           <div className="grid grid-cols-3 gap-3">
@@ -74,7 +71,6 @@ export default function NewListingPage() {
           </div>
         </div>
 
-        {/* Title + Desc */}
         <div className="bg-dark-900 border border-dark-800 rounded-2xl p-6 space-y-4">
           <div>
             <label className="text-white font-semibold mb-2 block">Гарчиг</label>
@@ -86,11 +82,10 @@ export default function NewListingPage() {
             <label className="text-white font-semibold mb-2 block">Дэлгэрэнгүй</label>
             <textarea value={description} onChange={e => setDescription(e.target.value)} rows={5}
               className="w-full bg-dark-800 border border-dark-700 rounded-xl px-4 py-3 text-white placeholder-dark-500 focus:outline-none focus:border-brand-500 resize-none"
-              placeholder="Аккаунтын дэлгэрэнгүй мэдээлэл, rank, skin, эд хэрэгсэл..." />
+              placeholder="Аккаунтын дэлгэрэнгүй мэдээлэл..." />
           </div>
         </div>
 
-        {/* Images */}
         <div className="bg-dark-900 border border-dark-800 rounded-2xl p-6">
           <label className="text-white font-semibold mb-3 block">Зурагны URL-ууд</label>
           <div className="space-y-2">
@@ -116,13 +111,11 @@ export default function NewListingPage() {
           )}
         </div>
 
-        {/* Price */}
         <div className="bg-dark-900 border border-dark-800 rounded-2xl p-6">
           <label className="text-white font-semibold mb-2 block">Үнэ (₮)</label>
           <input value={price} onChange={e => setPrice(e.target.value)} type="number" min="1000"
             className="w-full bg-dark-800 border border-dark-700 rounded-xl px-4 py-3 text-white placeholder-dark-500 focus:outline-none focus:border-brand-500 text-xl font-display"
             placeholder="50000" />
-
           {priceNum > 0 && (
             <div className="mt-4 p-4 bg-dark-800 rounded-xl">
               <div className="flex items-center gap-1.5 text-dark-300 text-xs mb-2">
