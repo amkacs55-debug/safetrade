@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 'use client'
 import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
@@ -173,4 +175,3 @@ function ListingCard({ listing }: { listing: any }) {
     </Link>
   )
 }
-
