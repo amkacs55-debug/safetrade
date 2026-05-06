@@ -269,3 +269,4 @@ CREATE INDEX idx_conversations_buyer ON conversations(buyer_id);
 CREATE INDEX idx_conversations_seller ON conversations(seller_id);
 CREATE INDEX idx_transactions_buyer ON transactions(buyer_id);
 CREATE INDEX idx_transactions_seller ON transactions(seller_id);
+
