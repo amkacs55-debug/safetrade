@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import Link from 'next/link'
 import { createServerSupabase } from '@/lib/supabase-server'
 import { GAMES, formatPrice } from '@/lib/utils'
@@ -143,3 +145,4 @@ function ListingCard({ listing }: { listing: any }) {
     </Link>
   )
 }
+
